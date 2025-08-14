@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+    bootstrap="tests/bootstrap.php"
+    backupGlobals="false"
+    backupStaticAttributes="false"
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    processIsolation="false"
+    stopOnFailure="false"
+    verbose="true">
+    
+    <testsuites>
+        <testsuite name="WP Migrate Test Suite">
+            <directory>./tests/unit</directory>
+            <directory>./tests/integration</directory>
+        </testsuite>
+        <testsuite name="Unit Tests">
+            <directory>./tests/unit</directory>
+        </testsuite>
+        <testsuite name="Integration Tests">
+            <directory>./tests/integration</directory>
+        </testsuite>
+    </testsuites>
+    
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./src</directory>
+            <file>./wp-migrate.php</file>
+        </include>
+        <exclude>
+            <directory>./tests</directory>
+            <directory>./build</directory>
+            <directory>./vendor</directory>
+            <directory>./node_modules</directory>
+        </exclude>
+        <report>
+            <html outputDirectory="build/coverage-html"/>
+            <clover outputFile="build/coverage.xml"/>
+        </report>
+    </coverage>
+    
+    <logging>
+        <junit outputFile="build/junit.xml"/>
+    </logging>
+    
+    <php>
+        <const name="WP_TESTS_DOMAIN" value="example.org" />
+        <const name="WP_TESTS_EMAIL" value="admin@example.org" />
+        <const name="WP_TESTS_TITLE" value="Test Site" />
+        <const name="WP_PHP_BINARY" value="php" />
+        <const name="WP_TESTS_MULTISITE" value="0" />
+        
+        <!-- WordPress Test Configuration -->
+        <server name="SERVER_NAME" value="http://localhost"/>
+        <env name="WP_PHPUNIT__TESTS_CONFIG" value="tests/wp-config.php"/>
+        
+        <!-- Plugin specific constants -->
+        <const name="WP_MIGRATE_TEST_MODE" value="true" />
+        <const name="WP_MIGRATE_TEST_DB" value="wp_migrate_test" />
+    </php>
+    
+    <groups>
+        <exclude>
+            <group>external-http</group>
+            <group>ms-required</group>
+        </exclude>
+    </groups>
+</phpunit>

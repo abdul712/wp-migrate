@@ -1,0 +1,578 @@
+/**
+ * WP Migrate Admin Styles
+ * WordPress admin interface styling for WP Migrate plugin
+ */
+
+/* Main plugin styles */
+.wp-migrate-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.wp-migrate-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.wp-migrate-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.wp-migrate-header .plugin-version {
+    margin-left: 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Dashboard cards */
+.wp-migrate-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.wp-migrate-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.wp-migrate-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
+}
+
+.wp-migrate-card .card-content {
+    margin-bottom: 15px;
+}
+
+.wp-migrate-card .card-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Statistics */
+.wp-migrate-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.wp-migrate-stat {
+    text-align: center;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.wp-migrate-stat .stat-number {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    color: #0073aa;
+    margin-bottom: 5px;
+}
+
+.wp-migrate-stat .stat-label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Connection status */
+.connection-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.connection-status .dashicons {
+    font-size: 16px;
+}
+
+.connection-status.success {
+    color: #46b450;
+}
+
+.connection-status.error {
+    color: #dc3232;
+}
+
+.connection-status.warning {
+    color: #ffb900;
+}
+
+/* Progress bars */
+.wp-migrate-progress {
+    margin: 20px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(to right, #0073aa, #00a0d2);
+    transition: width 0.3s ease;
+    border-radius: 10px;
+}
+
+.progress-text {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Migration wizard */
+.wp-migrate-wizard {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.wizard-header {
+    background: #f9f9f9;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.wizard-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.wizard-step-indicator {
+    display: flex;
+    align-items: center;
+    color: #666;
+    font-size: 14px;
+}
+
+.wizard-step-indicator.active {
+    color: #0073aa;
+    font-weight: bold;
+}
+
+.wizard-step-indicator.completed {
+    color: #46b450;
+}
+
+.wizard-step-indicator .dashicons {
+    margin-right: 5px;
+}
+
+.wizard-content {
+    padding: 30px;
+}
+
+.wizard-step {
+    display: none;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+.wizard-navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background: #f9f9f9;
+    border-top: 1px solid #ddd;
+}
+
+/* Forms */
+.wp-migrate-form {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.wp-migrate-form .form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.wp-migrate-form .form-group {
+    flex: 1;
+}
+
+.wp-migrate-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.wp-migrate-form input[type="text"],
+.wp-migrate-form input[type="url"],
+.wp-migrate-form input[type="email"],
+.wp-migrate-form input[type="password"],
+.wp-migrate-form textarea,
+.wp-migrate-form select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.wp-migrate-form input[type="text"]:focus,
+.wp-migrate-form input[type="url"]:focus,
+.wp-migrate-form input[type="email"]:focus,
+.wp-migrate-form input[type="password"]:focus,
+.wp-migrate-form textarea:focus,
+.wp-migrate-form select:focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 1px #0073aa;
+    outline: none;
+}
+
+.wp-migrate-form input.error,
+.wp-migrate-form textarea.error,
+.wp-migrate-form select.error {
+    border-color: #dc3232;
+    box-shadow: 0 0 0 1px #dc3232;
+}
+
+.wp-migrate-form .form-help {
+    font-size: 13px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.wp-migrate-form .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.wp-migrate-form .checkbox-group input[type="checkbox"] {
+    width: auto;
+}
+
+/* Tables */
+.wp-migrate-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.wp-migrate-table th,
+.wp-migrate-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.wp-migrate-table th {
+    background: #f9f9f9;
+    font-weight: bold;
+    color: #333;
+}
+
+.wp-migrate-table tbody tr:hover {
+    background: #f9f9f9;
+}
+
+.wp-migrate-table .actions {
+    white-space: nowrap;
+}
+
+.wp-migrate-table .actions a {
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.wp-migrate-table .actions a:last-child {
+    margin-right: 0;
+}
+
+/* File upload */
+.wp-migrate-file-upload {
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+    padding: 30px;
+    text-align: center;
+    background: #fafafa;
+    transition: border-color 0.3s ease;
+}
+
+.wp-migrate-file-upload:hover {
+    border-color: #0073aa;
+}
+
+.wp-migrate-file-upload.dragover {
+    border-color: #0073aa;
+    background: #f0f8ff;
+}
+
+.wp-migrate-file-upload .upload-icon {
+    font-size: 48px;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.wp-migrate-file-upload .upload-text {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.wp-migrate-file-upload .upload-hint {
+    font-size: 14px;
+    color: #999;
+}
+
+/* Buttons */
+.wp-migrate-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #0073aa;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.wp-migrate-button:hover {
+    background: #005a87;
+    color: #fff;
+}
+
+.wp-migrate-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.wp-migrate-button.secondary {
+    background: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.wp-migrate-button.secondary:hover {
+    background: #e0e0e0;
+}
+
+.wp-migrate-button.danger {
+    background: #dc3232;
+}
+
+.wp-migrate-button.danger:hover {
+    background: #a00;
+}
+
+.wp-migrate-button.success {
+    background: #46b450;
+}
+
+.wp-migrate-button.success:hover {
+    background: #2e7d32;
+}
+
+/* Notices */
+.wp-migrate-notices {
+    margin-bottom: 20px;
+}
+
+.wp-migrate-notice {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-left: 4px solid;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.wp-migrate-notice.success {
+    border-left-color: #46b450;
+}
+
+.wp-migrate-notice.error {
+    border-left-color: #dc3232;
+}
+
+.wp-migrate-notice.warning {
+    border-left-color: #ffb900;
+}
+
+.wp-migrate-notice.info {
+    border-left-color: #00a0d2;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .wp-migrate-dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .wp-migrate-form .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .wizard-navigation {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .wp-migrate-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .wp-migrate-table {
+        font-size: 14px;
+    }
+    
+    .wp-migrate-table th,
+    .wp-migrate-table td {
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wp-migrate-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .wizard-steps {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .wp-migrate-table {
+        font-size: 12px;
+    }
+    
+    .wp-migrate-table th,
+    .wp-migrate-table td {
+        padding: 6px 8px;
+    }
+}
+
+/* Utility classes */
+.wp-migrate-hidden {
+    display: none !important;
+}
+
+.wp-migrate-text-center {
+    text-align: center;
+}
+
+.wp-migrate-text-right {
+    text-align: right;
+}
+
+.wp-migrate-text-muted {
+    color: #666;
+}
+
+.wp-migrate-text-success {
+    color: #46b450;
+}
+
+.wp-migrate-text-error {
+    color: #dc3232;
+}
+
+.wp-migrate-text-warning {
+    color: #ffb900;
+}
+
+.wp-migrate-margin-bottom {
+    margin-bottom: 20px;
+}
+
+.wp-migrate-no-margin {
+    margin: 0;
+}
+
+/* Loading animations */
+.wp-migrate-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #0073aa;
+    border-radius: 50%;
+    animation: wp-migrate-spin 1s linear infinite;
+}
+
+@keyframes wp-migrate-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.wp-migrate-pulse {
+    animation: wp-migrate-pulse 2s ease-in-out infinite;
+}
+
+@keyframes wp-migrate-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .wp-migrate-card {
+        background: #1e1e1e;
+        border-color: #444;
+        color: #fff;
+    }
+    
+    .wp-migrate-form {
+        background: #1e1e1e;
+        border-color: #444;
+        color: #fff;
+    }
+    
+    .wp-migrate-form input,
+    .wp-migrate-form textarea,
+    .wp-migrate-form select {
+        background: #2a2a2a;
+        border-color: #555;
+        color: #fff;
+    }
+    
+    .wp-migrate-table {
+        background: #1e1e1e;
+        border-color: #444;
+        color: #fff;
+    }
+    
+    .wp-migrate-table th {
+        background: #2a2a2a;
+        color: #fff;
+    }
+}

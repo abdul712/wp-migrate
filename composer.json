@@ -1,0 +1,105 @@
+{
+    "name": "abdul712/wp-migrate",
+    "description": "A comprehensive WordPress migration tool that enables seamless database, media, and file synchronization between WordPress environments",
+    "type": "wordpress-plugin",
+    "keywords": ["wordpress", "migration", "database", "media", "backup", "sync"],
+    "homepage": "https://github.com/abdul712/wp-migrate",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Abdul Rahim",
+            "email": "abdul712@users.noreply.github.com",
+            "homepage": "https://github.com/abdul712"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/abdul712/wp-migrate/issues",
+        "source": "https://github.com/abdul712/wp-migrate"
+    },
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*",
+        "ext-mysqli": "*",
+        "ext-zip": "*",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "squizlabs/php_codesniffer": "^3.6",
+        "wp-coding-standards/wpcs": "^2.3",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7"
+    },
+    "suggest": {
+        "ext-openssl": "For encrypted API key storage",
+        "ext-imagick": "For advanced image processing during media sync",
+        "ext-gd": "For basic image processing"
+    },
+    "autoload": {
+        "psr-4": {
+            "WPMigrate\\": "src/"
+        },
+        "files": [
+            "wp-migrate.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WPMigrate\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit"
+        ],
+        "test:coverage": [
+            "phpunit --coverage-html=build/coverage"
+        ],
+        "lint": [
+            "phpcs --standard=phpcs.xml src/ wp-migrate.php"
+        ],
+        "lint:fix": [
+            "phpcbf --standard=phpcs.xml src/ wp-migrate.php"
+        ],
+        "check-compatibility": [
+            "phpcs --standard=PHPCompatibilityWP --runtime-set testVersion 7.4- src/ wp-migrate.php"
+        ],
+        "build": [
+            "@lint",
+            "@test",
+            "npm run build"
+        ],
+        "package": [
+            "@build",
+            "bin/package.sh"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "classmap-authoritative": true,
+        "apcu-autoloader": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "archive": {
+        "exclude": [
+            "tests/",
+            "build/",
+            "node_modules/",
+            "src/assets/scss/",
+            "*.md",
+            ".github/",
+            ".git*",
+            "phpcs.xml",
+            "phpunit.xml",
+            "package.json",
+            "package-lock.json",
+            "webpack.config.js",
+            "gulpfile.js"
+        ]
+    }
+}
