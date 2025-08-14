@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<ruleset name="WP Migrate Coding Standards">
+    <description>Coding standards for WP Migrate plugin</description>
+
+    <!-- Files and directories to check -->
+    <file>.</file>
+    
+    <!-- Exclude patterns -->
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/build/*</exclude-pattern>
+    <exclude-pattern>*/coverage/*</exclude-pattern>
+    <exclude-pattern>*/tests/coverage/*</exclude-pattern>
+    <exclude-pattern>*.min.js</exclude-pattern>
+    <exclude-pattern>*.min.css</exclude-pattern>
+
+    <!-- Include WordPress coding standards -->
+    <rule ref="WordPress">
+        <!-- Exclude specific rules that may be too strict for this project -->
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+        
+        <!-- Allow short array syntax -->
+        <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+        
+        <!-- Allow variables in double quoted strings -->
+        <exclude name="WordPress.PHP.DontExtract"/>
+        
+        <!-- Relax nonce verification for CLI commands -->
+        <exclude name="WordPress.Security.NonceVerification.Missing"/>
+    </rule>
+
+    <!-- WordPress VIP coding standards for extra security -->
+    <rule ref="WordPress-VIP-Go"/>
+
+    <!-- PHP compatibility -->
+    <rule ref="PHPCompatibilityWP"/>
+    
+    <!-- Set minimum PHP version -->
+    <config name="testVersion" value="7.4-"/>
+
+    <!-- Allow WordPress-specific functions -->
+    <rule ref="WordPress.WP.AlternativeFunctions">
+        <properties>
+            <property name="exclude" type="array">
+                <element value="file_get_contents"/>
+                <element value="file_put_contents"/>
+                <element value="curl_exec"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Set text domain for internationalization -->
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="wp-migrate"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Enforce WordPress naming conventions -->
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array">
+                <element value="wp_migrate"/>
+                <element value="WP_Migrate"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Line length settings -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="150"/>
+        </properties>
+    </rule>
+
+    <!-- Indentation settings -->
+    <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="indent" value="4"/>
+            <property name="tabIndent" value="false"/>
+        </properties>
+    </rule>
+
+    <!-- Documentation requirements -->
+    <rule ref="Squiz.Commenting.ClassComment"/>
+    <rule ref="Squiz.Commenting.FunctionComment"/>
+    <rule ref="Squiz.Commenting.FileComment"/>
+    <rule ref="Squiz.Commenting.VariableComment"/>
+
+    <!-- Security rules -->
+    <rule ref="WordPress.Security.EscapeOutput"/>
+    <rule ref="WordPress.Security.ValidatedSanitizedInput"/>
+    <rule ref="WordPress.Security.NonceVerification"/>
+
+    <!-- Performance rules -->
+    <rule ref="WordPress.DB.DirectDatabaseQuery"/>
+    <rule ref="WordPress.DB.PreparedSQL"/>
+    <rule ref="WordPress.DB.SlowDBQuery"/>
+
+    <!-- Custom severity levels -->
+    <rule ref="WordPress.PHP.NoSilencedErrors">
+        <type>error</type>
+    </rule>
+    
+    <rule ref="WordPress.Security.EscapeOutput">
+        <type>error</type>
+    </rule>
+</ruleset>
